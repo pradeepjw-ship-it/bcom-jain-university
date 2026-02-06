@@ -1,0 +1,7 @@
+{
+  "name": "B.Com Professional Excellence",
+  "description": "A comprehensive landing page for a Bachelor of Commerce course featuring curriculum details, career pathways, and an AI-powered course counselor.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
