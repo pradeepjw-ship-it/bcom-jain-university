@@ -1,13 +1,13 @@
-
 import React from 'react';
 import EnquiryFormInner from './EnquiryFormInner';
 
 interface Props {
   isOpen: boolean;
   onClose: () => void;
+  title?: string;
 }
 
-const EnquiryModal: React.FC<Props> = ({ isOpen, onClose }) => {
+const EnquiryModal: React.FC<Props> = ({ isOpen, onClose, title }) => {
   if (!isOpen) return null;
 
   return (
@@ -29,7 +29,7 @@ const EnquiryModal: React.FC<Props> = ({ isOpen, onClose }) => {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
-        <EnquiryFormInner onSuccess={onClose} title="Register Your Interest" />
+        <EnquiryFormInner onSuccess={onClose} title={title || "Register Your Interest"} />
       </div>
     </div>
   );

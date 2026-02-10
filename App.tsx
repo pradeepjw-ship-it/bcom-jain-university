@@ -14,8 +14,13 @@ import MobileStickyCTA from './components/MobileStickyCTA';
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalTitle, setModalTitle] = useState("Register Your Interest");
 
-  const openModal = () => setIsModalOpen(true);
+  const openModal = (title: string = "Register Your Interest") => {
+    setModalTitle(title);
+    setIsModalOpen(true);
+  };
+  
   const closeModal = () => setIsModalOpen(false);
 
   const stats = [
@@ -45,7 +50,7 @@ function App() {
     <div className="min-h-screen selection:bg-blue-100 selection:text-blue-900 pb-20 md:pb-0 font-inter">
       <Header />
       <main>
-        <Hero onCtaClick={openModal} />
+        <Hero onCtaClick={() => openModal("Apply for 2026 Batch")} />
         
         {/* Improved Stats Section - Distinct from Hero */}
         <section className="relative z-20 -mt-8 mx-4">
@@ -67,15 +72,18 @@ function App() {
         </section>
 
         <GlobalEdge />
-        <Syllabus onCtaClick={openModal} />
+        <Syllabus onCtaClick={() => openModal("Download Detailed Syllabus")} />
         <Recruiters />
         <CareerPath />
         <FAQ />
-        <EnquiryForm onCtaClick={openModal} />
+        <EnquiryForm onCtaClick={() => openModal("Start Your Application")} />
       </main>
       
-      <EnquiryModal isOpen={isModalOpen} onClose={closeModal} />
-      <MobileStickyCTA onCtaClick={openModal} />
+      <EnquiryModal isOpen={isModalOpen} onClose={closeModal} title={modalTitle} />
+      <MobileStickyCTA 
+        onDownload={() => openModal("Download Brochure")}
+        onCounselling={() => openModal("Get Free Counselling")}
+      />
       <CounselorChat />
       <Footer />
       <style dangerouslySetInnerHTML={{ __html: `
